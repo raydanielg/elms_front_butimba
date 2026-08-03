@@ -14,8 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { auth } from "@/lib/services";
 import { setAuth } from "@/lib/auth";
-import { Loader2, AlertCircle, Eye, EyeOff } from "lucide-react";
+import { AlertCircle, Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
+import { LegalDrawers } from "@/components/legal-drawers";
 import Image from "next/image";
+import Link from "next/link";
 
 export function AuthForm({
   className,
@@ -111,44 +114,46 @@ export function AuthForm({
 
               {/* Email */}
               <Field>
-                <FieldLabel htmlFor="email">Email Address</FieldLabel>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="you@butimba.ac.tz"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={loading}
-                  autoComplete="email"
-                />
+                <FieldLabel htmlFor="email" className="text-sm font-medium">Email</FieldLabel>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={loading}
+                    autoComplete="email"
+                    className="h-11 pl-10 text-sm"
+                  />
+                </div>
               </Field>
 
               {/* Password */}
               <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto text-xs text-muted-foreground underline-offset-2 hover:underline hover:text-primary"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setError("Please contact your administrator to reset your password.");
-                    }}
+                <div className="flex items-center justify-between">
+                  <FieldLabel htmlFor="password" className="text-sm font-medium">Password</FieldLabel>
+                  <Link
+                    href="/auth/forgot-password"
+                    className="text-xs text-muted-foreground underline-offset-2 hover:underline hover:text-primary transition-colors"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
                 <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     disabled={loading}
                     autoComplete="current-password"
-                    className="pr-10"
+                    className="h-11 pl-10 pr-10 text-sm"
                   />
                   <button
                     type="button"
@@ -170,12 +175,12 @@ export function AuthForm({
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full"
+                  className="w-full h-11 text-sm font-semibold shadow-md hover:shadow-lg transition-all"
                   disabled={loading}
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="size-4 animate-spin" />
+                      <Spinner className="size-4" />
                       Signing in...
                     </>
                   ) : (
@@ -232,13 +237,7 @@ export function AuthForm({
 
       <FieldDescription className="px-6 text-center text-xs text-muted-foreground">
         By signing in, you agree to the{" "}
-        <a href="#" className="underline hover:text-foreground">
-          Terms of Service
-        </a>{" "}
-        and{" "}
-        <a href="#" className="underline hover:text-foreground">
-          Privacy Policy
-        </a>
+        <LegalDrawers />
         .
       </FieldDescription>
     </div>
