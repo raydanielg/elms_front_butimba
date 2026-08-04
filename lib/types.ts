@@ -127,6 +127,7 @@ export interface DashboardStats {
   total_applicants?: number;
   total_programs?: number;
   total_courses?: number;
+  published_courses?: number;
   active_courses?: number;
   total_enrollments?: number;
   pending_applications?: number;
