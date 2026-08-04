@@ -1,5 +1,5 @@
 import api from "./api";
-import type { User, Course, DashboardStats, ApiResponse, CertificateTemplate, CertificateIssue, CertificateVerification, Award, Transcript, Notification, Conversation, Message, CalendarEvent, GradeItem, GradeCategory, StudentGrade, Badge, BadgeIssued, CompetencyFramework, Competency, QuestionCategory, Question } from "./types";
+import type { User, DashboardStats, ApiResponse, CertificateTemplate, CertificateIssue, CertificateVerification, Award, Transcript, Notification, Conversation, Message, CalendarEvent, StudentGrade, Badge, BadgeIssued, CompetencyFramework, QuestionCategory, Question } from "./types";
 
 export const auth = {
   login: (email: string, password: string) =>
