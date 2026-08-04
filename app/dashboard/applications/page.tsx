@@ -26,14 +26,14 @@ export default function ApplicationsPage() {
   const [apps, setApps] = useState<Application[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => { fetchApps() }, [])
-
   async function fetchApps() {
     try {
       const res = await api.get("/applications")
       setApps(res.data.data || [])
     } catch { } finally { setLoading(false) }
   }
+
+  useEffect(() => { fetchApps() }, [])
 
   async function review(id: string, status: string) {
     try {
