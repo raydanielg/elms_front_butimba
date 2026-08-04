@@ -57,10 +57,11 @@ export function AuthForm({
 
     try {
       const res = await auth.login(email, password);
-      setAuth(res.data.token, res.data.user);
+      setAuth(res.data.data.access_token, res.data.data.user);
       router.push("/dashboard");
     } catch (err: any) {
       const msg =
+        err.response?.data?.error?.message ||
         err.response?.data?.message ||
         err.response?.data?.errors?.email?.[0] ||
         "Login failed. Please check your credentials.";

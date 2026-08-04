@@ -30,9 +30,9 @@ export function NavUser() {
   const router = useRouter()
   const user = getUser()
 
-  const name = user?.name || "Guest"
+  const name = user?.full_name || "Guest"
   const email = user?.email || "guest@butimba.ac.tz"
-  const avatar = user?.avatar || ""
+  const avatar = user?.photo_url || ""
   const initials = name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
 
   async function handleLogout() {

@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Mail, CheckCircle2, ArrowLeft } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
+import { auth } from "@/lib/services";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,11 +32,14 @@ export function ForgotPasswordForm({
     setLoading(true);
 
     try {
-      // Simulate API call - replace with actual endpoint when backend supports it
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await auth.forgotPassword(email);
       setSent(true);
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err: any) {
+      const msg =
+        err.response?.data?.error?.message ||
+        err.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      setError(msg);
     } finally {
       setLoading(false);
     }

@@ -1,0 +1,8 @@
+export { AdminDashboard } from "./admin-dashboard"
+export { PrincipalDashboard } from "./principal-dashboard"
+export { RegistrarDashboard } from "./registrar-dashboard"
+export { AccountantDashboard } from "./accountant-dashboard"
+export { TutorDashboard } from "./tutor-dashboard"
+export { StudentDashboard } from "./student-dashboard"
+export { ApplicantDashboard } from "./applicant-dashboard"
+export { StaffDashboard } from "./staff-dashboard"
