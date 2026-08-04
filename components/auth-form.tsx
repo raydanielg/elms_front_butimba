@@ -57,11 +57,12 @@ export function AuthForm({
       const res = await auth.login(email, password);
       setAuth(res.data.data.access_token, res.data.data.user);
       window.location.href = "/dashboard";
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { error?: { message?: string }; message?: string; errors?: { email?: string[] } } } }
       const msg =
-        err.response?.data?.error?.message ||
-        err.response?.data?.message ||
-        err.response?.data?.errors?.email?.[0] ||
+        e.response?.data?.error?.message ||
+        e.response?.data?.message ||
+        e.response?.data?.errors?.email?.[0] ||
         "Login failed. Please check your credentials.";
       setError(msg);
     } finally {

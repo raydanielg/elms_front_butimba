@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => { Promise.resolve().then(() => setMounted(true)) }, [])
 
   if (!mounted) {
     return <Button variant="ghost" size="icon" className="size-8" disabled><IconSun className="size-4" /></Button>

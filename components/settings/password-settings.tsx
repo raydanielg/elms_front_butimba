@@ -34,8 +34,9 @@ export function PasswordSettings() {
       setCurrentPassword("")
       setPassword("")
       setPasswordConfirmation("")
-    } catch (err: any) {
-      setError(err.response?.data?.error?.message || err.response?.data?.message || "Failed to change password")
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { error?: { message?: string }; message?: string } } }
+      setError(e.response?.data?.error?.message || e.response?.data?.message || "Failed to change password")
     } finally {
       setLoading(false)
     }

@@ -34,8 +34,9 @@ export function ProfileSettings() {
         setAuth(getToken()!, { ...user, full_name, email, phone })
       }
       setSuccess(true)
-    } catch (err: any) {
-      setError(err.response?.data?.error?.message || err.response?.data?.message || "Failed to update profile")
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { error?: { message?: string }; message?: string } } }
+      setError(e.response?.data?.error?.message || e.response?.data?.message || "Failed to update profile")
     } finally {
       setLoading(false)
     }

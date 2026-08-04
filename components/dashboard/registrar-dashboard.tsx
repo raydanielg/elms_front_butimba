@@ -59,7 +59,7 @@ export function RegistrarDashboard() {
             <span className="text-sm font-medium text-orange-700">
               {stats?.courses_without_tutor} active course(s) have no assigned tutor.
             </span>
-            <a href="/dashboard/courses" className="ml-auto text-sm text-primary hover:underline">Assign →</a>
+                        <a href="/dashboard/courses" className="ml-auto text-sm text-primary hover:underline">Assign →</a>
           </div>
         </WidgetCard>
       )}

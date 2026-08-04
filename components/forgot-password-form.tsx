@@ -34,10 +34,11 @@ export function ForgotPasswordForm({
     try {
       await auth.forgotPassword(email);
       setSent(true);
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { error?: { message?: string }; message?: string } } }
       const msg =
-        err.response?.data?.error?.message ||
-        err.response?.data?.message ||
+        e.response?.data?.error?.message ||
+        e.response?.data?.message ||
         "Something went wrong. Please try again.";
       setError(msg);
     } finally {

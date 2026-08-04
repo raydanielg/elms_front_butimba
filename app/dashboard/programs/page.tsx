@@ -19,14 +19,14 @@ export default function ProgramsPage() {
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
 
-  useEffect(() => { fetchPrograms() }, [])
-
   async function fetchPrograms() {
     try {
       const res = await api.get("/programs")
       setPrograms(res.data.data || [])
     } catch { } finally { setLoading(false) }
   }
+
+  useEffect(() => { fetchPrograms() }, [])
 
   async function createProgram(data: Record<string, unknown>) {
     try {

@@ -67,14 +67,15 @@ export function RegisterForm({
       })
       setAuth(res.data.data.access_token, res.data.data.user)
       window.location.href = "/dashboard/apply"
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { error?: { message?: string }; message?: string; errors?: { email?: string[]; password?: string[]; full_name?: string[]; phone?: string[] } } } }
       const msg =
-        err.response?.data?.error?.message ||
-        err.response?.data?.message ||
-        err.response?.data?.errors?.email?.[0] ||
-        err.response?.data?.errors?.password?.[0] ||
-        err.response?.data?.errors?.full_name?.[0] ||
-        err.response?.data?.errors?.phone?.[0] ||
+        e.response?.data?.error?.message ||
+        e.response?.data?.message ||
+        e.response?.data?.errors?.email?.[0] ||
+        e.response?.data?.errors?.password?.[0] ||
+        e.response?.data?.errors?.full_name?.[0] ||
+        e.response?.data?.errors?.phone?.[0] ||
         "Registration failed. Please try again."
       setError(msg)
     } finally {

@@ -31,7 +31,7 @@ export function LegalDrawers() {
 
   useEffect(() => {
     if (open) {
-      setLoading(true)
+      Promise.resolve().then(() => setLoading(true))
       const timer = setTimeout(() => setLoading(false), 800)
       return () => clearTimeout(timer)
     }
