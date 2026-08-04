@@ -39,8 +39,8 @@ export default function StatsPage() {
   // Pie chart data
   const usersData = [
     { name: "Students", value: stats?.total_students ?? 0, fill: "#3b82f6" },
-    { name: "Lecturers", value: stats?.total_lecturers ?? 0, fill: "#10b981" },
-    { name: "Other Staff", value: Math.max(0, (stats?.total_users ?? 0) - (stats?.total_students ?? 0) - (stats?.total_lecturers ?? 0)), fill: "#f59e0b" },
+    { name: "Lecturers", value: stats?.total_tutors ?? 0, fill: "#10b981" },
+    { name: "Other Staff", value: Math.max(0, (stats?.total_users ?? 0) - (stats?.total_students ?? 0) - (stats?.total_tutors ?? 0)), fill: "#f59e0b" },
   ].filter(d => d.value > 0)
 
   const coursesData = [
@@ -385,7 +385,7 @@ export default function StatsPage() {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">Total Lecturers</span>
-                  <span className="font-medium">{stats?.total_lecturers ?? 0}</span>
+                  <span className="font-medium">{stats?.total_tutors ?? 0}</span>
                 </div>
               </>
             )}
