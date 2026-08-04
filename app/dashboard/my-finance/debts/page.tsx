@@ -87,7 +87,7 @@ export default function MyDebtsPage() {
       {!loading && debts.length === 0 && (
         <div className="flex flex-col items-center justify-center py-12 text-center">
           <IconCash className="size-12 text-muted-foreground/50" />
-          <p className="mt-4 text-sm text-muted-foreground">No debts found — you're all clear!</p>
+          <p className="mt-4 text-sm text-muted-foreground">No debts found — you&apos;re all clear!</p>
         </div>
       )}
     </DashboardShell>

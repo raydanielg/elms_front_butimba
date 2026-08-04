@@ -33,7 +33,7 @@ export default function ApplicationsPage() {
     } catch { } finally { setLoading(false) }
   }
 
-  useEffect(() => { fetchApps() }, [])
+  useEffect(() => { Promise.resolve().then(() => fetchApps()) }, [])
 
   async function review(id: string, status: string) {
     try {

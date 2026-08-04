@@ -32,7 +32,7 @@ export default function GradebookPage() {
       } catch { } finally { setLoading(false) }
     }
     if (courseId) fetchGrades()
-    else setLoading(false)
+    else Promise.resolve().then(() => setLoading(false))
   }, [courseId, isStudent])
 
   return (

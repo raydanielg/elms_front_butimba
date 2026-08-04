@@ -127,10 +127,11 @@ export default function ApplyPage() {
       })
 
       window.location.href = "/dashboard/application-status"
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { error?: { message?: string }; message?: string } } }
       setError(
-        err.response?.data?.error?.message ||
-        err.response?.data?.message ||
+        e.response?.data?.error?.message ||
+        e.response?.data?.message ||
         "Failed to submit application. Please try again."
       )
     } finally {
@@ -274,11 +275,11 @@ export default function ApplyPage() {
             </FieldGroup>
             <FieldGroup className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
               <Field>
-                <FieldLabel className="text-[11px] font-bold uppercase">Applicant's Phone Number *</FieldLabel>
+                <FieldLabel className="text-[11px] font-bold uppercase">Applicant&apos;s Phone Number *</FieldLabel>
                 <Input type="tel" required value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="0XXXXXXXXX" />
               </Field>
               <Field>
-                <FieldLabel className="text-[11px] font-bold uppercase">Relative's Phone Number *</FieldLabel>
+                <FieldLabel className="text-[11px] font-bold uppercase">Relative&apos;s Phone Number *</FieldLabel>
                 <Input type="tel" required value={form.relative_phone} onChange={e => update("relative_phone", e.target.value)} placeholder="0XXXXXXXXX" />
               </Field>
             </FieldGroup>

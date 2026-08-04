@@ -25,14 +25,14 @@ export default function PaymentsPage() {
   const [payments, setPayments] = useState<Payment[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => { fetchPayments() }, [])
-
   async function fetchPayments() {
     try {
       const res = await financeApi.getPayments()
       setPayments(res.data.data || [])
     } catch { } finally { setLoading(false) }
   }
+
+  useEffect(() => { Promise.resolve().then(() => fetchPayments()) }, [])
 
   async function verify(id: string) {
     try {

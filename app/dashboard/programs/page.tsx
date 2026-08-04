@@ -26,7 +26,7 @@ export default function ProgramsPage() {
     } catch { } finally { setLoading(false) }
   }
 
-  useEffect(() => { fetchPrograms() }, [])
+  useEffect(() => { Promise.resolve().then(() => fetchPrograms()) }, [])
 
   async function createProgram(data: Record<string, unknown>) {
     try {

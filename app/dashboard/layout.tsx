@@ -17,7 +17,7 @@ export default function DashboardLayout({
     if (!isAuthenticated()) {
       router.push("/auth")
     } else {
-      setChecked(true)
+      Promise.resolve().then(() => setChecked(true))
     }
   }, [router])
 
