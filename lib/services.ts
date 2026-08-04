@@ -226,6 +226,32 @@ export const applicationApi = {
   reject: (id: string) => api.post(`/applications/${id}/reject`),
 };
 
+// ===== Applicant Application API (for APPLICANT role) =====
+export const applicantApi = {
+  submitApplication: (data: {
+    program_id: string;
+    mode: string;
+    form_data?: Record<string, unknown>;
+    pay_slip_url?: string;
+  }) => api.post("/applications", data),
+  myApplicationStatus: (id: string) => api.get(`/applications/${id}/status`),
+  myApplications: () => api.get("/my-applications"),
+  uploadPaySlip: (file: File) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    return api.post("/files/draft", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  },
+  updatePaySlip: (applicationId: string, paySlipUrl: string) =>
+    api.patch(`/applications/${applicationId}/pay-slip`, { pay_slip_url: paySlipUrl }),
+};
+
+// ===== Programs API (public) =====
+export const programsApi = {
+  list: () => api.get("/programs"),
+};
+
 // ===== Payment Gateway API =====
 export const paymentGatewayApi = {
   list: () => api.get("/payment-gateways"),

@@ -56,6 +56,11 @@ export default function Page() {
 
   const role = user?.role || "STUDENT"
 
+  // Applicants get a standalone page without DashboardShell
+  if (role === "APPLICANT") {
+    return <ApplicantDashboard />
+  }
+
   const roleDashboard = (() => {
     switch (role) {
       case "SUPER_ADMIN": return <AdminDashboard />
@@ -64,7 +69,6 @@ export default function Page() {
       case "ACCOUNTANT": return <AccountantDashboard />
       case "TUTOR": return <TutorDashboard />
       case "STUDENT": return <StudentDashboard />
-      case "APPLICANT": return <ApplicantDashboard />
       case "STAFF": return <StaffDashboard />
       default: return <StudentDashboard />
     }

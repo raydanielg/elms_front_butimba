@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,7 +23,6 @@ export function AuthForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +56,7 @@ export function AuthForm({
     try {
       const res = await auth.login(email, password);
       setAuth(res.data.data.access_token, res.data.data.user);
-      router.push("/dashboard");
+      window.location.href = "/dashboard";
     } catch (err: any) {
       const msg =
         err.response?.data?.error?.message ||
@@ -189,6 +187,17 @@ export function AuthForm({
                   )}
                 </Button>
               </Field>
+
+              {/* Register link */}
+              <div className="text-center text-sm text-muted-foreground">
+                Don&apos;t have an account?{" "}
+                <Link
+                  href="/auth/register"
+                  className="font-semibold text-primary underline-offset-2 hover:underline transition-colors"
+                >
+                  Apply now
+                </Link>
+              </div>
             </FieldGroup>
           </form>
 

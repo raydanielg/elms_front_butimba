@@ -24,10 +24,11 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401 && typeof window !== "undefined") {
-      localStorage.removeItem("elms_token");
-      localStorage.removeItem("elms_user");
-      if (!window.location.pathname.startsWith("/login") && !window.location.pathname.startsWith("/register")) {
-        window.location.href = "/login";
+      const path = window.location.pathname;
+      if (path.startsWith("/dashboard")) {
+        localStorage.removeItem("elms_token");
+        localStorage.removeItem("elms_user");
+        window.location.href = "/auth";
       }
     }
     return Promise.reject(error);
