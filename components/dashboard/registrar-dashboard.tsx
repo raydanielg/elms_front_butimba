@@ -7,6 +7,7 @@ import { Bar, BarChart, XAxis, YAxis, CartesianGrid } from "recharts"
 import { dashboardApi } from "@/lib/services"
 import type { DashboardStats } from "@/lib/types"
 import { KpiGrid, QuickActions, WidgetCard, EmptyState } from "./shared"
+import Link from "next/link"
 import {
   IconUserPlus, IconClipboardCheck, IconUsers, IconBook2, IconSchool,
   IconAlertTriangle, IconChartBar, IconPlus, IconUserCheck, IconClipboardList,
@@ -59,7 +60,7 @@ export function RegistrarDashboard() {
             <span className="text-sm font-medium text-orange-700">
               {stats?.courses_without_tutor} active course(s) have no assigned tutor.
             </span>
-                        <a href="/dashboard/courses" className="ml-auto text-sm text-primary hover:underline">Assign →</a>
+                        <Link href="/dashboard/courses" className="ml-auto text-sm text-primary hover:underline">Assign →</Link>
           </div>
         </WidgetCard>
       )}
@@ -99,13 +100,13 @@ export function RegistrarDashboard() {
       {/* Quick links */}
       <div className="grid gap-4 md:grid-cols-3">
         <WidgetCard title="Student Records" description="Search and manage students">
-          <a href="/dashboard/users/students" className="text-sm text-primary hover:underline">View students →</a>
+          <Link href="/dashboard/users/students" className="text-sm text-primary hover:underline">View students →</Link>
         </WidgetCard>
         <WidgetCard title="Courses" description="Create and manage courses">
-          <a href="/dashboard/courses" className="text-sm text-primary hover:underline">View courses →</a>
+          <Link href="/dashboard/courses" className="text-sm text-primary hover:underline">View courses →</Link>
         </WidgetCard>
         <WidgetCard title="Applications" description="Review pending applications">
-          <a href="/dashboard/applications" className="text-sm text-primary hover:underline">Review applications →</a>
+          <Link href="/dashboard/applications" className="text-sm text-primary hover:underline">Review applications →</Link>
         </WidgetCard>
       </div>
     </>
