@@ -115,6 +115,9 @@ export const certificateApi = {
   listAwards: () => api.get<ApiResponse<Award[]>>("/awards"),
   createAward: (data: Record<string, unknown>) =>
     api.post<ApiResponse<Award>>("/awards", data),
+
+  viewUrl: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}/certificates/${id}/view`,
+  downloadUrl: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}/certificates/${id}/download`,
 };
 
 // ===== Notification API =====

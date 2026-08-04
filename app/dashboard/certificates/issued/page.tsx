@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Button } from "@/components/ui/button"
 import { certificateApi } from "@/lib/services"
 import type { CertificateIssue } from "@/lib/types"
-import { IconAward, IconQrcode, IconPrinter, IconDownload } from "@tabler/icons-react"
+import { IconAward, IconQrcode, IconPrinter, IconDownload, IconEye } from "@tabler/icons-react"
 
 export default function IssuedPage() {
   const [issues, setIssues] = useState<CertificateIssue[]>([])
@@ -69,12 +69,21 @@ export default function IssuedPage() {
                   </BadgeUI>
                   <span className="text-xs text-muted-foreground">{new Date(issue.issued_at).toLocaleDateString()}</span>
                   <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="sm" className="gap-1.5">
-                      <IconDownload className="size-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm" className="gap-1.5">
-                      <IconPrinter className="size-4" />
-                    </Button>
+                    <a href={certificateApi.viewUrl(issue.id)} target="_blank" rel="noopener noreferrer">
+                      <Button variant="ghost" size="sm" className="gap-1.5">
+                        <IconEye className="size-4" />
+                      </Button>
+                    </a>
+                    <a href={certificateApi.downloadUrl(issue.id)} target="_blank" rel="noopener noreferrer">
+                      <Button variant="ghost" size="sm" className="gap-1.5">
+                        <IconDownload className="size-4" />
+                      </Button>
+                    </a>
+                    <a href={certificateApi.viewUrl(issue.id)} target="_blank" rel="noopener noreferrer">
+                      <Button variant="ghost" size="sm" className="gap-1.5">
+                        <IconPrinter className="size-4" />
+                      </Button>
+                    </a>
                     {issue.status === "ISSUED" && (
                       <Button variant="ghost" size="sm" className="gap-1.5 text-destructive" onClick={async () => {
                         const reason = prompt("Revoke reason:")

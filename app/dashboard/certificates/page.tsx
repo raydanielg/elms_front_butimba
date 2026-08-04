@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { certificateApi } from "@/lib/services"
 import { getUser } from "@/lib/auth"
 import type { CertificateIssue } from "@/lib/types"
-import { IconCertificate, IconAward, IconFileText, IconQrcode, IconDownload, IconPrinter, IconShare } from "@tabler/icons-react"
+import { IconCertificate, IconAward, IconFileText, IconQrcode, IconDownload, IconPrinter, IconShare, IconEye } from "@tabler/icons-react"
 
 export default function MyCertificatesPage() {
   const [certificates, setCertificates] = useState<CertificateIssue[]>([])
@@ -89,12 +89,21 @@ export default function MyCertificatesPage() {
                   <code className="text-xs font-mono">{cert.code}</code>
                 </div>
                 <div className="flex items-center gap-2 pt-2">
-                  <Button variant="outline" size="sm" className="gap-1.5">
-                    <IconDownload className="size-4" /> PDF
-                  </Button>
-                  <Button variant="outline" size="sm" className="gap-1.5">
-                    <IconPrinter className="size-4" /> Print
-                  </Button>
+                  <a href={certificateApi.viewUrl(cert.id)} target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="gap-1.5">
+                      <IconEye className="size-4" /> View
+                    </Button>
+                  </a>
+                  <a href={certificateApi.downloadUrl(cert.id)} target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="gap-1.5">
+                      <IconDownload className="size-4" /> PDF
+                    </Button>
+                  </a>
+                  <a href={certificateApi.viewUrl(cert.id)} target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="gap-1.5">
+                      <IconPrinter className="size-4" /> Print
+                    </Button>
+                  </a>
                   <a href={`/verify/${cert.code}`} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "gap-1.5")}>
                     <IconShare className="size-4" /> Verify
                   </a>
