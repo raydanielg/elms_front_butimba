@@ -5,7 +5,8 @@ import { DashboardShell } from "@/components/dashboard-shell"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge as BadgeUI } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { certificateApi } from "@/lib/services"
 import { getUser } from "@/lib/auth"
 import type { CertificateIssue } from "@/lib/types"
@@ -94,11 +95,9 @@ export default function MyCertificatesPage() {
                   <Button variant="outline" size="sm" className="gap-1.5">
                     <IconPrinter className="size-4" /> Print
                   </Button>
-                  <Button variant="ghost" size="sm" className="gap-1.5" asChild>
-                    <a href={`/verify/${cert.code}`} target="_blank" rel="noopener noreferrer">
-                      <IconShare className="size-4" /> Verify
-                    </a>
-                  </Button>
+                  <a href={`/verify/${cert.code}`} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "gap-1.5")}>
+                    <IconShare className="size-4" /> Verify
+                  </a>
                 </div>
               </CardContent>
             </Card>
