@@ -13,8 +13,8 @@ type AuditLog = {
   id: string
   actor_id: string
   action: string
-  entity_type: string
-  entity_id: string
+  entity: string
+  entity_id: string | null
   meta?: Record<string, unknown>
   created_at: string
   actor?: { full_name: string }
@@ -64,7 +64,7 @@ export default function AuditLogsPage() {
                 <TableRow key={l.id}>
                   <TableCell className="font-medium">{l.actor?.full_name || l.actor_id}</TableCell>
                   <TableCell><Badge variant="outline">{l.action}</Badge></TableCell>
-                  <TableCell className="text-muted-foreground">{l.entity_type}: {l.entity_id?.slice(0, 8)}</TableCell>
+                  <TableCell className="text-muted-foreground">{l.entity}{l.entity_id ? `: ${l.entity_id.slice(0, 8)}` : ''}</TableCell>
                   <TableCell className="text-xs text-muted-foreground">{new Date(l.created_at).toLocaleString()}</TableCell>
                 </TableRow>
               ))}
