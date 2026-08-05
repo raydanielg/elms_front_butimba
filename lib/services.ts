@@ -261,3 +261,50 @@ export const paymentGatewayApi = {
   verifyPayment: (paymentId: string, data?: { gateway_reference?: string }) =>
     api.post(`/payments/${paymentId}/verify`, data ?? {}),
 };
+
+// ===== Admin API =====
+export const adminApi = {
+  listUsers: (params?: Record<string, string>) => api.get("/users", { params }),
+  createUser: (data: { full_name: string; email: string; password: string; role: string; status?: string }) =>
+    api.post("/users", data),
+  updateUser: (id: string, data: Record<string, unknown>) => api.patch(`/users/${id}`, data),
+  getAuditLogs: (params?: Record<string, string>) => api.get("/audit-logs", { params }),
+  getNews: () => api.get("/news"),
+  getMedia: () => api.get("/media"),
+  createNews: (data: Record<string, unknown>) => api.post("/media/news", data),
+  uploadMedia: (data: FormData) => api.post("/media/gallery", data, { headers: { "Content-Type": "multipart/form-data" } }),
+  homeMessage: (data: Record<string, unknown>) => api.post("/home/message", data),
+  getConfig: () => api.get("/admin/config"),
+  updateConfig: (name: string, data: Record<string, unknown>) => api.put(`/admin/config/${name}`, data),
+};
+
+// ===== Results API =====
+export const resultsApi = {
+  list: (params?: Record<string, string>) => api.get("/results", { params }),
+  create: (data: Record<string, unknown>) => api.post("/results", data),
+  update: (id: string, data: Record<string, unknown>) => api.patch(`/results/${id}`, data),
+};
+
+// ===== Subjects API =====
+export const subjectsApi = {
+  list: () => api.get("/subjects"),
+  create: (data: Record<string, unknown>) => api.post("/subjects", data),
+  update: (id: string, data: Record<string, unknown>) => api.patch(`/subjects/${id}`, data),
+  delete: (id: string) => api.delete(`/subjects/${id}`),
+};
+
+// ===== Departments API =====
+export const departmentsApi = {
+  list: () => api.get("/departments"),
+  create: (data: Record<string, unknown>) => api.post("/departments", data),
+  update: (id: string, data: Record<string, unknown>) => api.patch(`/departments/${id}`, data),
+  delete: (id: string) => api.delete(`/departments/${id}`),
+};
+
+// ===== Programs API (full) =====
+export const programsFullApi = {
+  list: () => api.get("/programs"),
+  create: (data: Record<string, unknown>) => api.post("/programs", data),
+  update: (id: string, data: Record<string, unknown>) => api.patch(`/programs/${id}`, data),
+  delete: (id: string) => api.delete(`/programs/${id}`),
+};

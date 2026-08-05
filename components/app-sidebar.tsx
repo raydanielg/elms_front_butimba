@@ -223,6 +223,16 @@ function getStudentNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         ],
       },
       {
+        title: "Messaging",
+        url: "/dashboard/messages",
+        icon: <IconMessage2 />,
+      },
+      {
+        title: "Calendar",
+        url: "/dashboard/calendar",
+        icon: <IconCalendarEvent />,
+      },
+      {
         title: "Finance",
         url: "/dashboard/my-finance",
         icon: <IconCash />,
@@ -322,6 +332,16 @@ function getTutorNav(): { navMain: NavItem[]; projects: QuickItem[] } {
           { title: "All", url: "/dashboard/announcements" },
           { title: "Pinned", url: "/dashboard/announcements/pinned" },
         ],
+      },
+      {
+        title: "Messaging",
+        url: "/dashboard/messages",
+        icon: <IconMessage2 />,
+      },
+      {
+        title: "Calendar",
+        url: "/dashboard/calendar",
+        icon: <IconCalendarEvent />,
       },
       {
         title: "Results",
