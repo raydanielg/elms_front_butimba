@@ -51,7 +51,8 @@ type QuickItem = {
   icon: React.ReactNode
 }
 
-function getAdminNav(): { navMain: NavItem[]; projects: QuickItem[] } {
+// ===== SUPER_ADMIN — full access to everything =====
+function getSuperAdminNav(): { navMain: NavItem[]; projects: QuickItem[] } {
   return {
     navMain: [
       {
@@ -162,6 +163,276 @@ function getAdminNav(): { navMain: NavItem[]; projects: QuickItem[] } {
     projects: [
       { name: "Reports", url: "/dashboard/reports", icon: <IconChartBar /> },
       { name: "News & Events", url: "/dashboard/news", icon: <IconFileText /> },
+    ],
+  }
+}
+
+// ===== PRINCIPAL — institutional oversight, reports, media, announcements =====
+function getPrincipalNav(): { navMain: NavItem[]; projects: QuickItem[] } {
+  return {
+    navMain: [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: <IconLayoutDashboard />,
+        isActive: true,
+        items: [
+          { title: "Overview", url: "/dashboard" },
+          { title: "Statistics", url: "/dashboard/stats" },
+          { title: "Reports", url: "/dashboard/reports" },
+        ],
+      },
+      {
+        title: "Academic",
+        url: "/dashboard/programs",
+        icon: <IconBooks />,
+        items: [
+          { title: "Programs", url: "/dashboard/programs" },
+          { title: "Subjects", url: "/dashboard/subjects" },
+          { title: "Departments", url: "/dashboard/departments" },
+        ],
+      },
+      {
+        title: "Courses",
+        url: "/dashboard/courses",
+        icon: <IconBook2 />,
+        items: [
+          { title: "All Courses", url: "/dashboard/courses" },
+        ],
+      },
+      {
+        title: "Users",
+        url: "/dashboard/users",
+        icon: <IconUsers />,
+        items: [
+          { title: "All Users", url: "/dashboard/users" },
+          { title: "Students", url: "/dashboard/users/students" },
+          { title: "Lecturers", url: "/dashboard/users/lecturers" },
+        ],
+      },
+      {
+        title: "Applications",
+        url: "/dashboard/applications",
+        icon: <IconUserPlus />,
+        items: [
+          { title: "All Applications", url: "/dashboard/applications" },
+          { title: "Pending Review", url: "/dashboard/applications/pending" },
+        ],
+      },
+      {
+        title: "Certificates",
+        url: "/dashboard/certificates",
+        icon: <IconCertificate />,
+        items: [
+          { title: "Issued", url: "/dashboard/certificates/issued" },
+          { title: "Awards", url: "/dashboard/certificates/awards" },
+          { title: "Transcripts", url: "/dashboard/certificates/transcripts" },
+        ],
+      },
+      {
+        title: "Announcements",
+        url: "/dashboard/announcements",
+        icon: <IconBell />,
+        items: [
+          { title: "All", url: "/dashboard/announcements" },
+          { title: "Pinned", url: "/dashboard/announcements/pinned" },
+        ],
+      },
+      {
+        title: "Messaging",
+        url: "/dashboard/messages",
+        icon: <IconMessage2 />,
+      },
+      {
+        title: "Calendar",
+        url: "/dashboard/calendar",
+        icon: <IconCalendarEvent />,
+      },
+      {
+        title: "Settings",
+        url: "/dashboard/settings",
+        icon: <IconSettings />,
+        items: [
+          { title: "Profile", url: "/dashboard/settings/profile" },
+          { title: "Password", url: "/dashboard/settings/password" },
+        ],
+      },
+    ],
+    projects: [
+      { name: "Reports", url: "/dashboard/reports", icon: <IconChartBar /> },
+      { name: "News & Events", url: "/dashboard/news", icon: <IconFileText /> },
+    ],
+  }
+}
+
+// ===== REGISTRAR — admissions, academic management, certificates =====
+function getRegistrarNav(): { navMain: NavItem[]; projects: QuickItem[] } {
+  return {
+    navMain: [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: <IconLayoutDashboard />,
+        isActive: true,
+        items: [
+          { title: "Overview", url: "/dashboard" },
+          { title: "Statistics", url: "/dashboard/stats" },
+        ],
+      },
+      {
+        title: "Courses",
+        url: "/dashboard/courses",
+        icon: <IconBook2 />,
+        items: [
+          { title: "All Courses", url: "/dashboard/courses" },
+          { title: "Create Course", url: "/dashboard/courses/new" },
+        ],
+      },
+      {
+        title: "Academic",
+        url: "/dashboard/programs",
+        icon: <IconBooks />,
+        items: [
+          { title: "Programs", url: "/dashboard/programs" },
+          { title: "Subjects", url: "/dashboard/subjects" },
+        ],
+      },
+      {
+        title: "Users",
+        url: "/dashboard/users",
+        icon: <IconUsers />,
+        items: [
+          { title: "All Users", url: "/dashboard/users" },
+          { title: "Students", url: "/dashboard/users/students" },
+          { title: "Lecturers", url: "/dashboard/users/lecturers" },
+        ],
+      },
+      {
+        title: "Applications",
+        url: "/dashboard/applications",
+        icon: <IconUserPlus />,
+        items: [
+          { title: "All Applications", url: "/dashboard/applications" },
+          { title: "Pending Review", url: "/dashboard/applications/pending" },
+        ],
+      },
+      {
+        title: "Certificates",
+        url: "/dashboard/certificates",
+        icon: <IconCertificate />,
+        items: [
+          { title: "Templates", url: "/dashboard/certificates/templates" },
+          { title: "Issue Center", url: "/dashboard/certificates/issue" },
+          { title: "Issued", url: "/dashboard/certificates/issued" },
+          { title: "Awards", url: "/dashboard/certificates/awards" },
+          { title: "Transcripts", url: "/dashboard/certificates/transcripts" },
+        ],
+      },
+      {
+        title: "Announcements",
+        url: "/dashboard/announcements",
+        icon: <IconBell />,
+        items: [
+          { title: "All", url: "/dashboard/announcements" },
+          { title: "Pinned", url: "/dashboard/announcements/pinned" },
+        ],
+      },
+      {
+        title: "Messaging",
+        url: "/dashboard/messages",
+        icon: <IconMessage2 />,
+      },
+      {
+        title: "Calendar",
+        url: "/dashboard/calendar",
+        icon: <IconCalendarEvent />,
+      },
+      {
+        title: "Settings",
+        url: "/dashboard/settings",
+        icon: <IconSettings />,
+        items: [
+          { title: "Profile", url: "/dashboard/settings/profile" },
+          { title: "Password", url: "/dashboard/settings/password" },
+        ],
+      },
+    ],
+    projects: [
+      { name: "Applications", url: "/dashboard/applications", icon: <IconUserPlus /> },
+      { name: "Certificates", url: "/dashboard/certificates", icon: <IconCertificate /> },
+    ],
+  }
+}
+
+// ===== ACCOUNTANT — fees, payments, debts, finance reports =====
+function getAccountantNav(): { navMain: NavItem[]; projects: QuickItem[] } {
+  return {
+    navMain: [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: <IconLayoutDashboard />,
+        isActive: true,
+        items: [
+          { title: "Overview", url: "/dashboard" },
+          { title: "Statistics", url: "/dashboard/stats" },
+        ],
+      },
+      {
+        title: "Finance",
+        url: "/dashboard/finance",
+        icon: <IconCash />,
+        items: [
+          { title: "Fee Structures", url: "/dashboard/finance/fees" },
+          { title: "Payments", url: "/dashboard/finance/payments" },
+          { title: "Debts", url: "/dashboard/finance/debts" },
+        ],
+      },
+      {
+        title: "Users",
+        url: "/dashboard/users",
+        icon: <IconUsers />,
+        items: [
+          { title: "Students", url: "/dashboard/users/students" },
+        ],
+      },
+      {
+        title: "Reports",
+        url: "/dashboard/reports",
+        icon: <IconChartBar />,
+      },
+      {
+        title: "Announcements",
+        url: "/dashboard/announcements",
+        icon: <IconBell />,
+        items: [
+          { title: "All", url: "/dashboard/announcements" },
+          { title: "Pinned", url: "/dashboard/announcements/pinned" },
+        ],
+      },
+      {
+        title: "Messaging",
+        url: "/dashboard/messages",
+        icon: <IconMessage2 />,
+      },
+      {
+        title: "Calendar",
+        url: "/dashboard/calendar",
+        icon: <IconCalendarEvent />,
+      },
+      {
+        title: "Settings",
+        url: "/dashboard/settings",
+        icon: <IconSettings />,
+        items: [
+          { title: "Profile", url: "/dashboard/settings/profile" },
+          { title: "Password", url: "/dashboard/settings/password" },
+        ],
+      },
+    ],
+    projects: [
+      { name: "Payments", url: "/dashboard/finance/payments", icon: <IconCash /> },
+      { name: "Debts", url: "/dashboard/finance/debts", icon: <IconChartBar /> },
     ],
   }
 }
@@ -411,10 +682,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { navMain, projects } = React.useMemo(() => {
     switch (role) {
       case "SUPER_ADMIN":
+        return getSuperAdminNav()
       case "PRINCIPAL":
+        return getPrincipalNav()
       case "REGISTRAR":
+        return getRegistrarNav()
       case "ACCOUNTANT":
-        return getAdminNav()
+        return getAccountantNav()
       case "TUTOR":
         return getTutorNav()
       case "STUDENT":
