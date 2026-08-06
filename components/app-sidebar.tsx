@@ -167,7 +167,7 @@ function getSuperAdminNav(): { navMain: NavItem[]; projects: QuickItem[] } {
   }
 }
 
-// ===== PRINCIPAL — institutional oversight, reports, media, announcements =====
+// ===== PRINCIPAL — institutional oversight, reports, news, announcements =====
 function getPrincipalNav(): { navMain: NavItem[]; projects: QuickItem[] } {
   return {
     navMain: [
@@ -201,7 +201,7 @@ function getPrincipalNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         ],
       },
       {
-        title: "Users",
+        title: "Staff & Students",
         url: "/dashboard/users",
         icon: <IconUsers />,
         items: [
@@ -211,7 +211,7 @@ function getPrincipalNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         ],
       },
       {
-        title: "Applications",
+        title: "Student Admissions",
         url: "/dashboard/applications",
         icon: <IconUserPlus />,
         items: [
@@ -228,6 +228,11 @@ function getPrincipalNav(): { navMain: NavItem[]; projects: QuickItem[] } {
           { title: "Awards", url: "/dashboard/certificates/awards" },
           { title: "Transcripts", url: "/dashboard/certificates/transcripts" },
         ],
+      },
+      {
+        title: "News & Events",
+        url: "/dashboard/news",
+        icon: <IconFileText />,
       },
       {
         title: "Announcements",
@@ -265,7 +270,7 @@ function getPrincipalNav(): { navMain: NavItem[]; projects: QuickItem[] } {
   }
 }
 
-// ===== REGISTRAR — admissions, academic management, certificates =====
+// ===== REGISTRAR — admissions, students, academic, certificates, payments =====
 function getRegistrarNav(): { navMain: NavItem[]; projects: QuickItem[] } {
   return {
     navMain: [
@@ -280,12 +285,21 @@ function getRegistrarNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         ],
       },
       {
-        title: "Courses",
-        url: "/dashboard/courses",
-        icon: <IconBook2 />,
+        title: "Student Admissions",
+        url: "/dashboard/applications",
+        icon: <IconUserPlus />,
         items: [
-          { title: "All Courses", url: "/dashboard/courses" },
-          { title: "Create Course", url: "/dashboard/courses/new" },
+          { title: "All Applications", url: "/dashboard/applications" },
+          { title: "Pending Review", url: "/dashboard/applications/pending" },
+        ],
+      },
+      {
+        title: "Students",
+        url: "/dashboard/users",
+        icon: <IconUsers />,
+        items: [
+          { title: "All Students", url: "/dashboard/users/students" },
+          { title: "Lecturers", url: "/dashboard/users/lecturers" },
         ],
       },
       {
@@ -298,22 +312,22 @@ function getRegistrarNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         ],
       },
       {
-        title: "Users",
-        url: "/dashboard/users",
-        icon: <IconUsers />,
+        title: "Courses",
+        url: "/dashboard/courses",
+        icon: <IconBook2 />,
         items: [
-          { title: "All Users", url: "/dashboard/users" },
-          { title: "Students", url: "/dashboard/users/students" },
-          { title: "Lecturers", url: "/dashboard/users/lecturers" },
+          { title: "All Courses", url: "/dashboard/courses" },
+          { title: "Create Course", url: "/dashboard/courses/new" },
         ],
       },
       {
-        title: "Applications",
-        url: "/dashboard/applications",
-        icon: <IconUserPlus />,
+        title: "Payments & Finance",
+        url: "/dashboard/finance",
+        icon: <IconCash />,
         items: [
-          { title: "All Applications", url: "/dashboard/applications" },
-          { title: "Pending Review", url: "/dashboard/applications/pending" },
+          { title: "Fee Structures", url: "/dashboard/finance/fees" },
+          { title: "Payments", url: "/dashboard/finance/payments" },
+          { title: "Debts", url: "/dashboard/finance/debts" },
         ],
       },
       {
@@ -347,24 +361,15 @@ function getRegistrarNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         url: "/dashboard/calendar",
         icon: <IconCalendarEvent />,
       },
-      {
-        title: "Settings",
-        url: "/dashboard/settings",
-        icon: <IconSettings />,
-        items: [
-          { title: "Profile", url: "/dashboard/settings/profile" },
-          { title: "Password", url: "/dashboard/settings/password" },
-        ],
-      },
     ],
     projects: [
-      { name: "Applications", url: "/dashboard/applications", icon: <IconUserPlus /> },
-      { name: "Certificates", url: "/dashboard/certificates", icon: <IconCertificate /> },
+      { name: "Admissions", url: "/dashboard/applications", icon: <IconUserPlus /> },
+      { name: "Payments", url: "/dashboard/finance/payments", icon: <IconCash /> },
     ],
   }
 }
 
-// ===== ACCOUNTANT — fees, payments, debts, finance reports =====
+// ===== ACCOUNTANT — fees, payments, debts, student finance =====
 function getAccountantNav(): { navMain: NavItem[]; projects: QuickItem[] } {
   return {
     navMain: [
@@ -389,11 +394,11 @@ function getAccountantNav(): { navMain: NavItem[]; projects: QuickItem[] } {
         ],
       },
       {
-        title: "Users",
+        title: "Students",
         url: "/dashboard/users",
         icon: <IconUsers />,
         items: [
-          { title: "Students", url: "/dashboard/users/students" },
+          { title: "All Students", url: "/dashboard/users/students" },
         ],
       },
       {
